@@ -1,132 +1,70 @@
-Private Portfolio
-=========================
+# Getting Started with Create React App
 
-By Edgardo Lopez
--------------------------
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Table of Contents
-==============================
-*   [The Purpose](#the-purpose)
-*   [Critera](#criteria)
-*   [Installation](#installation)
-*   [Usage](#usage)
-*   [The Process](#the-process)
-*   [What Was Done Differently](#differently)
-*   [Built With](#built-with)
-*   [Contributing](#contributing)
-*   [Project Status](#project-status)
-*   [Disclaimer](#disclaimer)
-*   [Website](#website)
-==============================
+## Available Scripts
 
-#   [The Purpose](#the-purpose)
+In the project directory, you can run:
 
-There are two purposes:  One, to show my personal portfolio for the others to see when introducing myself.  Two, to contribute on a more public usage by showing how the portfolio was made to aid those making their own portfolio.
+### `npm start`
 
-#   [Critera](#criteria)
+Runs the app in the development mode.\
+Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
-    CRITERIA:
+The page will reload when you make changes.\
+You may also see any lint errors in the console.
 
-    GIVEN I need to sample a potential employee's previous work
+### `npm test`
 
-    WHEN I load their portfolio
-    THEN I am presented with the developer's name, a recent photo or avatar, and links to sections about them, their work, and how to contact them
+Launches the test runner in the interactive watch mode.\
+See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-    WHEN I click one of the links in the navigation
-    THEN the UI scrolls to the corresponding section
+### `npm run build`
 
-    WHEN I click on the link to the section about their work
-    THEN the UI scrolls to a section with titled images of the developer's applications
+Builds the app for production to the `build` folder.\
+It correctly bundles React in production mode and optimizes the build for the best performance.
 
-    WHEN I am presented with the developer's first application
-    THEN that application's image should be larger in size than the others
+The build is minified and the filenames include the hashes.\
+Your app is ready to be deployed!
 
-    WHEN I click on the images of the applications
-    THEN I am taken to that deployed application
+See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-    WHEN I resize the page or view the site on various screens and devices
-    THEN I am presented with a responsive layout that adapts to my viewport
+### `npm run eject`
 
-#   [Installation](#installation)
+**Note: this is a one-way operation. Once you `eject`, you can't go back!**
 
-Head on over to the GitHub:
+If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
-When you have a folder location, issue the command:  
+Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
 
-```bash
-git clone {link of the project}
-```
-There are additional steps:
--Make sure your device is able to get Sanity to work.  If it's not, you'll need to update your device.  Click on the link when it prompts if you get that error for more information
--Need to have a Sanity Account.  I used the "GitHub" account to be able to use it
--Because this project is linked to your account, you'll need to not only sign in, but also, you need to change these two values:
-```
-export const client = sanityClient ({
-    projectId: process.env.REACT_APP_SANITY_PROJECT_ID, <=
-    dataset: 'production',
-    apiVersion: '2022-02-01',
-    useCdn: true,
-    token: process.env.REACT_APP_SANITY_TOKEN, <=
-});
-```
-This is found in the "App.js" file in: frontend-react/src.
-To do this, however, you'll either need to change that OR make a new ".env" file in the source and then apply the changes there.  You'll need to go to your Sanity Account to get the ID and token.
+You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
 
-CAUTION:  Replacing the values in the "App.js" is not advisable.  Use the ".env" file instead!
+## Learn More
 
-Once you do that, you'll need two different terminals:
--for the backend_sanity, use the command
-```
-sanity start
-```
--for the frontend_react:
-```
-npm run start
-```
+You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
-#   [Usage](#usage)
+To learn React, check out the [React documentation](https://reactjs.org/).
 
-For the most part, you'll need to go to Sanity.  When the program is running, most of it to use... is really easy.  All you got to do is go to Sanity and then fill out the correspondent information:
+### Code Splitting
 
-((SHOW SCREENSHOT))
+This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
 
+### Analyzing the Bundle Size
 
+This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
 
-#   [The Process](#the-process)
+### Making a Progressive Web App
 
-I followed the steps of JavaScript Mastery.  In it, I followed step by step, even taking notes on what each of the functions does.  Throughout the code, there are comments for my personal guidance to see how the function interact and work.  I've also made another folder, with ALL the ReadMe's sections to try and understand more on what was going on.
+This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
 
-In the beginning, it was a struggle since there was so much to take, but after about 2 hours in, not only was I able to put the pieces together, but was also able to come up with different ideas for the code.
+### Advanced Configuration
 
-When the guidance was done, I then went back and change up a few values to reflect the portfolio itself.  I went and changed some of the coding to also include features that weren't in the video such as including a Resume and links from the social networks.  
+This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
 
-#  [What Was Done Differently](#differently)
+### Deployment
 
-Comparing to the module itself, this was taken from the style of the project 3.  Using both Sanity and the "react-dom" that wasn't used in class.  I've also used different files such as .jsx and .cscc.  Finally, to get it online:
-https://edgardo-portfolio-final.netlify.app/
-This is the result.  I used the services of "netlify"
+This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
 
-#   [Built With](#built-with)
+### `npm run build` fails to minify
 
-    *HTML
-    *SCSS
-    *.jsx
-    *Sanity
-
-#  [Contributing](#contributing)
-Made with ❤️ by [Edgardo Lopez]
-
-#  [Project Status](#project-status)
-
-As stated on the "What Was Done Differently", there are portions of the file that have been changed since assigned.  As I continue to grow as a developer, I'll be inputing additional of my work from GitHub on the portfolio as well as reconstructing the layout of the page (such as the previous change when using Grid instead of Flex).  Keep an eye out for any updates on the portfolio itself!
-
-#  [Disclaimer](#disclaimer)
-
-The project is open for anyone to use.  As stated on the purpose, it's to help out those that are starting in making a portfolio of their own.
-
-#   [Website](#website)
-
-GitHub:
-https://github.com/elopez08/React-Portfolio
-Working site:
-https://edgardo-portfolio-final.netlify.app/
+This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
