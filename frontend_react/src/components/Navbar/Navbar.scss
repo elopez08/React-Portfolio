@@ -1,0 +1,193 @@
+.app__navbar {
+    width: 100%;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    padding: 1rem 2rem;
+    background: rgba(255,255,255,0.25);
+
+    //Blurry background around the navigation bar
+    backdrop-filter: blur(4px);
+    //Not all browsers are able to do above, so make the below property
+    -webkit-backdrop-filter: blur(4px);
+    border: 1px solid rgba(255,255,255,0.18);
+
+    //stays on top
+    position: fixed;
+    //Make it appear above the content
+    z-index: 2;
+}
+
+.app__navbar-logo {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+
+    //Why .scss was used and not .css
+    //We can do "nesting properties", which is used for the "img"
+    //We can go even deeper, still, with the @media property and do the same thing
+    img {
+        width: 90px;
+        height: 20px;
+
+        @media screen and (min-width: 2000px) {
+            width: 180px;
+            height: 40px;
+        }
+    }
+
+}
+
+//Remember the flex is 1 for the NAVBAR LINKS ONLY.  The log, since it is OUTSIDE of this property, will NOT be affected by the flex property down below
+.app__navbar-links {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    list-style: none;
+
+    li {
+        margin: 0 1rem;
+        //Need to make sure that the user know it's clickable
+        cursor: pointer;
+
+        flex-direction: column;
+
+        div {
+            width: 5px;
+            height: 5px;
+            background: transparent;
+            border-radius: 50%;
+
+            margin-bottom: 5px;
+
+        }
+        a {
+            //FOund in the index.css on the src folder
+            color: var(--gray-color);
+            text-decoration: none;
+            flex-direction: column;
+
+            text-transform: uppercase;
+            font-weight: 500;
+
+            //Fade in and out that is used with the "hover" down below
+            transition: all 0.3s ease-in-out;
+
+            &:hover {
+                color :var(--secondary-color);
+            }
+
+        }
+
+        &:hover {
+            div {
+                background: var(--secondary-color);
+            }
+        }
+    }
+
+    @media screen and (max-width: 900px) {
+        display: none;
+    }
+
+}
+
+.app__navbar-menu {
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    position: relative;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: var(--secondary-color);
+
+    svg {
+        width: 70%;
+        height: 70%;
+        color: var(--white-color);
+    }
+
+    div {
+        position: fixed;
+        top: 0;
+        bottom: 0;
+        right: 0;
+        z-index: 5;
+
+        padding: 1rem;
+
+        width: 80%;
+        height: 100vh;
+
+        //Flexing the word list (home, about, etc)
+        display: flex;
+        justify-content: flex-end;
+        align-items: flex-end;
+        flex-direction: column;
+        //Use the background picture
+        background: url('../../assets/bgWhite.png');
+        background-color: var(--white-color);
+
+        //It'll repeat the picture
+        background-size: cover;
+        background-repeat: repeat;
+
+        //This is to make the light shadow appear at the side of the menu we're working on
+        box-shadow: 0 0 20px rgba(168, 168, 168, 0.15);
+
+        svg {
+            width: 35px;
+            height: 35px;
+            color: var(--secondary-color);
+            margin: 0.5rem 1rem;
+        }
+
+        ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            width: 100%;
+
+            display: flex;
+            justify-content: flex-start;
+            align-items: flex-start;
+            flex-direction: column;
+
+            li {
+                margin: 1rem;
+
+                a {
+                    color: var(--gray-color);
+                    text-decoration: none;
+                    font-size: 1rem;
+                    text-transform: uppercase;
+                    font-weight: 500;
+
+                    transition: all 0.3s ease-in-out;
+
+                    &:hover {
+                        color :var(--secondary-color);
+                    }
+
+                }
+            }
+        }
+
+        //If the screen is greater than 900 px, the menu screen will "disappear".  In reality, it's going to the top part of the page
+        @media screen and (min-width: 900px) {
+            display: none;
+        }
+
+    }
+
+    @media screen and (min-width: 900px) {
+        display: none;
+    }
+}

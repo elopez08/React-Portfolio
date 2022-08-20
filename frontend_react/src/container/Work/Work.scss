@@ -1,0 +1,189 @@
+//This is what makes the list involving "UI/UX, Web App, etc", appear on each row
+.app__works {
+    flex: 1;
+    width: 100%;
+    flex-direction: column;
+}
+
+.app__work-filter {
+    //makes them appear side by side on a row
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    flex-wrap: wrap;
+
+    margin: 4rem 0 2rem;
+
+    //Before this, the list is going to appear each other side by side.  By doing this, each with this property is going to have these identities, which will cause them to separate one another
+    .app__work-filter-item {
+        padding: 0.5rem 1rem;
+        border-radius: 0.5rem;
+        background-color: #fff;
+        color: #000;
+        font-weight: 800;
+
+        //You can make the clickable by doing this: 
+        cursor: pointer;
+        transition: all 0.3s ease;
+        margin: 0.5rem;
+
+        //Remember to use &, NOT $ for this next transition: 
+        &:hover {
+            background-color: var(--secondary-color);
+            //This makes the text go white IF hovered over!
+            color: #fff;
+        }
+
+        //I've also noticed that this also has an animation of increasing/decreasing the size if we were to change screen sizes!
+        @media screen and (min-width: 2000px) {
+            padding: 1rem 2rem;
+            border-radius: 0.85rem;
+        }
+    }
+
+    //This is a separate item!
+    .item-active {
+        background-color: var(--secondary-color);
+        //This makes the text go white IF hovered over!
+        color: #fff;
+    }
+}
+
+//This next section is changing the perspective of the image!
+//Note this isn't going to trigger any changes just yet if this is the ONLY thing being added: 
+
+.app__work-portfolio {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+
+    //What would really affect the image (partially, though!)
+    .app__work-item {
+        //This is what causes the image and words to line up row by row
+        width: 270px;
+        flex-direction: column;
+
+        //This is what will allow the text to stand out.  Image will still be overlapping the "white box" that is now visible if there's no size change!
+        margin: 2rem;
+        padding: 1rem;
+        border-radius: 0.5rem;
+        background-color: #fff;
+        color: #000;
+
+        cursor: pointer;
+        transition: all 0.3s ease;
+
+        //A shadow will appear.  This takes up behind the white box
+        &:hover {
+            box-shadow: 0 0 25px rgba(0,0,0,0.2)
+        }
+
+        //The image inside the box will now be able to be adjusted thanks to this.  Before it, it was stretchy
+        @media screen and (min-width: 2000px) {
+            width: 470px;
+            padding: 1.25rem;
+            border-radius: 0.75rem;
+        }
+
+        @media screen and (max-width: 300px) {
+            width: 100%;
+            margin:1rem;
+        }
+    }
+}
+
+//In order to have it standout even more, do the following for the image that has this tag: 
+.app__work-img {
+    width: 100%;
+    height: 230px;
+
+    //THIS IS IMPORTANT TO NOTE!!!
+    position: relative;
+
+    //"img" property (contains <img>
+    //This will now cause the image to be shrunk down to fit inside the box
+    img {
+        width: 100%;
+        height: 100%;
+        border-radius: 0.5rem;
+        object-fit: cover;
+    }
+
+    //On a VERY large size format:
+    @media screen and (min-width: 2000px) {
+        height: 350px;
+    }
+}
+
+//There are two icons present in the portfolio.  These icons display the "eye" and "GitHub".  However, it appears on the SIDE of the photo as suppose to over it.  In order to accomplish this, we needed to do the following:
+.app__work-hover {
+    //THIS IS WHAT MAKES IT OVER THE IMAGE.  Recall that ".app__work-img" IS THE ONE with the "relative" property.  So now there's a chain that happens.  Since this is absolute, it'll be over the property that has the relative
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.5);
+
+    //The transition triggers AFTER the animation of the white box
+    border-radius: 0.5rem;
+    opacity: 0;
+    transition: all 0.3s ease;
+
+    //The icons STILL look small.  We need to give that its properties as well!
+
+    div{
+        width: 50px;
+        height: 50px;
+        //THIS IS WHAT CAUSES THE ICONS TO BE A CIRCLE
+        border-radius: 50%;
+        background-color: rgba(0,0,0,0.5);
+        //What makes the icons white: 
+        color: #fff;
+
+        margin: 1rem;
+        font-family: var(--font-base);
+        font-weight: 800;
+        cursor: pointer;
+        transition: all 0.3s ease;
+
+        //what caused it to be in a higher size
+        svg {
+            width: 50%;
+            height: 50%;
+            color: var(--white-color);
+        }
+    }
+}
+
+//Now that we have the icons, the last thing we need is to work on the words.  This is going to be separated from the image/icons we worked with, so we have a new section
+.app__work-content {
+    padding: 0.5rem;
+    width: 100%;
+    position: relative;
+    //This is what causes the title, tag, and description to line up in rows!
+    flex-direction: column;
+
+    //Targeting SPECIFICALLY the "h4" tag INSIDE the "app__work-content
+    h4 {
+       margin-top: 1rem;
+       line-height: 1.5;
+    }
+
+    .app__work-tag {
+        //TARGETING IN RELATED TO "app__work-content"
+        position: absolute;
+
+        padding: 0.5rem 1rem;
+        border-radius: 10px;
+        background-color: #fff;
+        //What causes the tag to appear in front of the image.  It isn't related to the image, so the more appropriate term is:  What is causing the tag to appear ABOVE the content
+
+        //Note also since this isn't related to the "img"'s position, this DOESN'T darken the tag
+        top: -25px;
+    }
+}
